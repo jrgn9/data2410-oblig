@@ -55,3 +55,5 @@ provide screenshots of the client browser, verifying that you receive the conten
 • what the function returns.
 • how do you handle exceptions
 DEADLINE to hand in oblig: Wednesday March 1, 23:59
+
+test1234
