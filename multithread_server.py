@@ -12,7 +12,7 @@ ADDR = (HOST, PORT) # Kaller host og port for ADDR (for å forenkle videre)
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM) # Definerer socket med socket familie og type
 sock.bind(ADDR) # binder adressen til socketen
-sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)  # Hva gjør denne???
+sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)  # Setter socket options som gjør at bind kan reuse adresse
 
 def handle_client():
     print(f"[ACTIVE CONNECTIONS] {threading.active_count() - 1}") # prints how many connections that are active in this process
@@ -32,7 +32,7 @@ def start():
         # FEILHÅNDTERING:
         try:    # Prøver å åpne html-filen
             # Åpne html fil
-            file = open("index.html", "r")  # HVA GJØR r???
+            file = open("index.html", "r")  # åpner filen med r (read)
 
         except FileNotFoundError: # Hvis filen ikke lar seg åpnes/ikke finnes
             # Sender feilmelding, lager 404 responsmelding og lukker connection

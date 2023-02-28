@@ -14,7 +14,7 @@ sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM) # Definerer socket med 
 # AF_INET indicates that underlying network is using IPv4
 # SOCK_STREAM indicates that it is a TCP socket
 sock.bind(ADDR) # binder adressen til socketen
-sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)  # HVA GJØR DENNE????
+sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)  # Setter socket options som gjør at bind kan reuse adresse
 
 #Funksjon for å starte serveren
 def start():
@@ -30,7 +30,7 @@ def start():
         # FEILHÅNDTERING:
         try:    # Prøver å åpne html-filen
             # Åpne html fil
-            file = open("index.html", "r")  # HVA GJØR r???
+            file = open("index.html", "r")  # åpner filen med r (read)
 
         except FileNotFoundError: # Hvis filen ikke lar seg åpnes/ikke finnes
             # Sender feilmelding, lager 404 responsmelding og lukker connection
