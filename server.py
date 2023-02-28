@@ -14,7 +14,7 @@ sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM) # Definerer socket med 
 # AF_INET indicates that underlying network is using IPv4
 # SOCK_STREAM indicates that it is a TCP socket
 sock.bind(ADDR) # binder adressen til socketen
-sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)  # Hva gjør denne???
+sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)  # HVA GJØR DENNE????
 
 #Funksjon for å starte serveren
 def start():
