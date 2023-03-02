@@ -3,6 +3,8 @@
 # create an HTTP response message consisting of the requested file preceded by header lines, 
 # and then send the response directly to the client.
 
+#Kodeinspirasjon hentet fra https://www.techwithtim.net/tutorials/socket-programming/
+
 import socket
 
 # Final/static variabler

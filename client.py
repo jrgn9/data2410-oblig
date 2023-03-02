@@ -2,6 +2,8 @@
 # Instead of using a browser, write your own HTTP client to test your server. 
 # Your client will connect to the server using a TCP connection, send an HTTP request to the server, and display the server response as an output.
 
+#Kodeinspirasjon hentet fra https://www.techwithtim.net/tutorials/socket-programming/
+
 import socket
 import sys
 

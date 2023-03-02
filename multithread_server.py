@@ -2,6 +2,8 @@
 # Currently, your web server handles only one HTTP request at a time. 
 # You should implement a multithreaded server that is capable of serving multiple requests simultaneously
 
+#Kodeinspirasjon hentet fra https://www.techwithtim.net/tutorials/socket-programming/
+
 import socket
 import threading
 import time
