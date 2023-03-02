@@ -4,6 +4,7 @@
 
 import socket
 import threading
+import time
 
 # Final/static variabler
 PORT = 9999 # Setter port
@@ -20,9 +21,8 @@ def handle_client(conn, addr):  # Funksjon for å håndtere en connection
 
     connected = True
     while connected: # Kjører så lenge det er en connection
-        conn, addr = sock.accept()    # Aksepter connection på adressen som kommer inn
+        # conn, addr = sock.accept()    # Aksepter connection på adressen som kommer inn
         request = conn.recv(1024).decode()  # Tar imot request på 1024 bytes
-        print(f"[ACTIVE CONNECTIONS] {threading.active_count() - 1}") # prints how many connections that are active in this process
         print(f"[REQUEST] {request}")   # Printer ut requesten til serveren
 
         # FEILHÅNDTERING:
@@ -57,6 +57,7 @@ def handle_client(conn, addr):  # Funksjon for å håndtere en connection
             #Sender responsmelding og lukker connection
             conn.send(response)
             print(f"[RESPONSE SENT] {response}")
+            time.sleep(100000000)
             print("[CONNECTION CLOSED]")
             conn.close()
             connected = False
@@ -66,9 +67,14 @@ def handle_client(conn, addr):  # Funksjon for å håndtere en connection
 def start():
     sock.listen()   # Socket lytter etter connections
     print(f"[LISTENING] Server listening on {ADDR} \n") # Melding som viser host adresse som lyttes til
+    
+    while True:
+        conn, addr = sock.accept() # Aksepter connection på adressen som kommer inn
+        thread = threading.Thread(target=handle_client, args=(conn, addr))
+        thread.start()
+        print(f"[ACTIVE CONNECTIONS] {threading.active_count() - 1}") # prints how many connections that are active in this process
 
    
-
 # Starter serveren
 print("[STARTING] Server is starting")  # Melding om at serveren starter
 start() # Kaller på funksjonen til å starte serveren
