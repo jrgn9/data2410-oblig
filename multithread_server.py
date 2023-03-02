@@ -14,19 +14,15 @@ sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM) # Definerer socket med 
 sock.bind(ADDR) # binder adressen til socketen
 sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)  # Setter socket options som gjør at bind kan reuse adresse
 
-def handle_client():
-    print(f"[ACTIVE CONNECTIONS] {threading.active_count() - 1}") # prints how many connections that are active in this process
-    pass
 
-#Funksjon for å starte serveren
-def start():
-    sock.listen()   # Socket lytter etter connections
-    print(f"[LISTENING] Server listening on {ADDR} \n") # Melding som viser host adresse som lyttes til
+def handle_client(conn, addr):  # Funksjon for å håndtere en connection
+    print(f"[CONNECTION] {addr} connected")
 
     connected = True
     while connected: # Kjører så lenge det er en connection
         conn, addr = sock.accept()    # Aksepter connection på adressen som kommer inn
         request = conn.recv(1024).decode()  # Tar imot request på 1024 bytes
+        print(f"[ACTIVE CONNECTIONS] {threading.active_count() - 1}") # prints how many connections that are active in this process
         print(f"[REQUEST] {request}")   # Printer ut requesten til serveren
 
         # FEILHÅNDTERING:
@@ -64,6 +60,14 @@ def start():
             print("[CONNECTION CLOSED]")
             conn.close()
             connected = False
+
+
+#Funksjon for å starte serveren
+def start():
+    sock.listen()   # Socket lytter etter connections
+    print(f"[LISTENING] Server listening on {ADDR} \n") # Melding som viser host adresse som lyttes til
+
+   
 
 # Starter serveren
 print("[STARTING] Server is starting")  # Melding om at serveren starter
