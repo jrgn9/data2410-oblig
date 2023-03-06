@@ -40,7 +40,7 @@ def start():
             fail_msg = fail_msg.encode()
             conn.send(fail_msg)
             print("[CONNECTION CLOSED] Error 404 Not Found")
-            response = "HTTP/1.1 404 Not Found\n"
+            response = "HTTP/1.1 404 NOT Found\n"
             response = response.encode()
             conn.close()
             connected = False
