@@ -1,5 +1,9 @@
 # data2410-oblig
 
+> ## ⚠️ Migrated to Codeberg
+>
+> This project has [migrated to Codeberg](https://codeberg.org/jrgn9/data2410-oblig).
+
 ## Rules and prerequisites
 This mandatory assignment must be completed individually. Your submission must be approved prior
 to submission of the portfolio 1. To pass the submission you must meet the requirements that are
